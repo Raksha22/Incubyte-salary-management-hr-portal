@@ -44,3 +44,6 @@ node_modules
 # https://vitejs.dev/guide/env-and-mode.html#env-files
 *.local
 
+# Optional local copy of the employer assessment brief (keep out of version control if you prefer).
+/Salary Management Assessment.md
+
