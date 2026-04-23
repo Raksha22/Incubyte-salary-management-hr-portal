@@ -190,34 +190,4 @@ Screen recording of the running app (CRUD, filters, salary insights):
 
 Reviewers can run the app locally with sections 1–3 above after cloning from Git.
 
-## 8) Push this repo to GitHub (or GitLab)
 
-From the project root, after your changes are committed:
-
-```bash
-git status
-git add -A
-git commit -m "Your message if you still have uncommitted changes"
-```
-
-Add a remote (once) using your real URL:
-
-```bash
-git remote add origin https://github.com/YOUR_USER/YOUR_REPO.git
-```
-
-If `origin` already exists but points elsewhere, use `git remote set-url origin https://github.com/YOUR_USER/YOUR_REPO.git` instead.
-
-Push the current branch (named `main` here):
-
-```bash
-git branch
-git push -u origin main
-```
-
-If the hosting site shows an empty repo with different default branch instructions, follow that page (for example `git push -u origin main:main`). Authenticate with SSH (`git@github.com:...`) or HTTPS using a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) where a password would normally be used.
-
-## Notes
-
-- `db/data/first_names.txt` and `db/data/last_names.txt` are used to generate names.
-- Bulk seeding uses batched `insert_all!` for performance.
