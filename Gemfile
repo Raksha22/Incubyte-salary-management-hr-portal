@@ -2,8 +2,22 @@ source "https://rubygems.org"
 
 ruby "3.0.2"
 
+# IRB 1.17+ depends on the `prism` native extension. On some Ruby 3.0.2 setups,
+# `prism` fails to compile, which blocks `bundle install`. Pin IRB to a version
+# that does not require `prism`.
+gem "irb", "1.16.0"
+
+# `rdoc` 7.x depends on the default gem `tsort`, which can resolve to `0.2.0`.
+# On Ruby 3.0.2 + Rubygems 3.2.x, the default activated `tsort` is often `0.1.0`,
+# and Bundler then errors with "already activated tsort 0.1.0 ... requires 0.2.0".
+# Pinning `rdoc` to 6.6.3.1 avoids pulling `tsort` as a separate gem version.
+gem "rdoc", "6.6.3.1"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.6"
+# Rails 7.1.6's `railties` depends on `tsort (>= 0.2)`, which conflicts with Ruby 3.0.2
+# installs that still ship `tsort` as a default gem at 0.1.x (common on some distros).
+# Pinning Rails to 7.1.5 avoids that dependency while staying on Rails 7.1.
+gem "rails", "7.1.5"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
